@@ -24,6 +24,7 @@ Route::group(['prefix'=>'en'],function(){
     Route::get('login',[AuthController::class,'login'])->middleware('nowlogin');
     Route::post('/login',[AuthController::class,'loginuser'])->name('login');
     Route::get('/dashboard',[AuthController::class,'dashboard'])->middleware('checklogin');
+    Route::get('/test',[AuthController::class,'test'])->middleware('checklogin');
     Route::get('/logout',[AuthController::class,'logout']);
 
 

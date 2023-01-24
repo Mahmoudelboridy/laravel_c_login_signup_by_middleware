@@ -69,5 +69,11 @@ class AuthController extends Controller
         return redirect()->to('en/login');
 
     }
+    public function test(){
+        if(session::has('name')){
+        $name=session::get('name');
+      $user_data=User::where('name','=',$name)->first();
+      return view('auth.test',compact('user_data'));
+    }}
 
 }
