@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class nowlogin
 {
@@ -16,9 +18,11 @@ class nowlogin
      */
     public function handle(Request $request, Closure $next)
     {
+
         if(session()->has('name')){
-            return redirect('en/dashboard');
-        }      
-          return $next($request);
+            return redirect()->back();
+
+        }  
+        return $next($request);
     }
 }

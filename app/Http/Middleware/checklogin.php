@@ -17,10 +17,8 @@ class checklogin
     public function handle(Request $request, Closure $next)
     {
         if(!session()->has('name')){
-            return redirect('en/login');
+            return redirect('/login');
         }
         return $next($request);
-
     }
-
 }

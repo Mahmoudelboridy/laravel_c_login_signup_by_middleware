@@ -8,17 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     use HasFactory;
-    public function setPasswordAttribute($password){
-        $this->attributes['password']=bcrypt($password);
-    }
+   
     public $table="users";
     protected $fillable=[
         "name",
         "email",
-        "password"
+        "password",
+        "image",
+        "role"
     ];
     protected $hidden=[
         "created_at",
         "updated_at"
     ];
+
 }

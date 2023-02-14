@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\authcontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,18 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::group(['prefix'=>'en'],function(){
-    Route::get('register',[AuthController::class,'registration'])->middleware('nowlogin');
-    Route::post('/register',[AuthController::class,'registeruser'])->name('signup');
-    Route::get('login',[AuthController::class,'login'])->middleware('nowlogin');
-    Route::post('/login',[AuthController::class,'loginuser'])->name('login');
-    Route::get('/dashboard',[AuthController::class,'dashboard'])->middleware('checklogin');
-    Route::get('/test',[AuthController::class,'test'])->middleware('checklogin');
-    Route::get('/logout',[AuthController::class,'logout']);
-
-
-
-
-});
+})->middleware('nowlogin');
+Route::get('signup',[authcontroller::class,'signup'])->middleware('nowlogin');
+Route::post('/signup',[authcontroller::class,'sign_up'])->name('signup');
+Route::get('login',[authcontroller::class,'login'])->middleware('nowlogin');
+Route::post('/login',[authcontroller::class,'log_in'])->name('login');
+Route::get('/admin',[authController::class,'admin'])->middleware('checklogin');
+Route::get('/vendor',[authController::class,'vendor'])->middleware('checklogin');
+Route::get('/user',[authController::class,'user'])->middleware('checklogin');
+Route::get('/logout',[authController::class,'logout']);
